@@ -24,15 +24,18 @@ jobs:
           TO_BRANCH: "staging"
       - name: Opening pull request to money
         id: pull-money
-        uses: Elph/sync-branch@v1
+        uses: Elph/sync-branch@edbcd34e434ce417f482d47fef90f321181eae69
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "money"
+          REVIEWERS: "Elph"
+          TEAM_REVIEWERS: "@elphnet/me"
       - name: Opening pull request to activation
         id: pull-activation
-        uses: Elph/sync-branch@v1
+        uses: Elph/sync-branch@edbcd34e434ce417f482d47fef90f321181eae69
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "activation"
+          REVIEWERS: "Elph"
