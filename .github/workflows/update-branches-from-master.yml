@@ -22,5 +22,5 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "staging"
-          REVIEWERS: "Elph"
+          REVIEWERS: "Elph "
           TEAM_REVIEWERS: "me"
