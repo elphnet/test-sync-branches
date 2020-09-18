@@ -23,4 +23,4 @@ jobs:
           FROM_BRANCH: "master"
           TO_BRANCH: "staging"
           REVIEWERS: "Elph"
-          TEAM_REVIEWERS: "@elphnet/me"
+          TEAM_REVIEWERS: "elphnet/me"
