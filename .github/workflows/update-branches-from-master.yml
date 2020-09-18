@@ -17,14 +17,14 @@ jobs:
           node-version: 12
       - name: Opening pull request to staging
         id: pull-staging
-        uses: Elph/sync-branch@ad4e0e4036cf78c593ccaefb109cde44ea8ec916
+        uses: Elph/sync-branch@4cbfe7c91fa6614ef32c7f17cb7ce9312eb4c680
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "staging"
       - name: Opening pull request to money
         id: pull-money
-        uses: Elph/sync-branch@ad4e0e4036cf78c593ccaefb109cde44ea8ec916
+        uses: Elph/sync-branch@4cbfe7c91fa6614ef32c7f17cb7ce9312eb4c680
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
@@ -33,7 +33,7 @@ jobs:
           TEAM_REVIEWERS: "@elphnet/me"
       - name: Opening pull request to activation
         id: pull-activation
-        uses: Elph/sync-branch@ad4e0e4036cf78c593ccaefb109cde44ea8ec916
+        uses: Elph/sync-branch@4cbfe7c91fa6614ef32c7f17cb7ce9312eb4c680
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
