@@ -17,7 +17,7 @@ jobs:
           node-version: 12
       - name: Opening pull request to staging
         id: pull-staging
-        uses: Elph/sync-branch@05dcd42c7c8980c1272e0ca208bf3bb3da518ddf
+        uses: Elph/sync-branch@24f164aef6bbd8278ee34f20a2472884ddb9b7e3
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
