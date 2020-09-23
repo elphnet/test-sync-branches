@@ -1,0 +1,41 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      releaseBranch:
+        description: 'Release Branch Name'     
+        required: true
+
+jobs:
+  release-branches:
+    runs-on: ubuntu-latest
+    name: Syncing branches
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: create branch
+        uses: peterjgrainger/action-create-branch@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: ${{ github.event.inputs.releaseBranch }}
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Opening pull request for staging release
+        id: release-staging
+        uses: Elph/sync-branch@v1.1.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "staging"
+          TO_BRANCH: ${{ github.event.inputs.releaseBranch }}
+          REVIEWERS: "Elph "
+      - name: Opening pull request for activation release
+        id: release-activation
+        uses: Elph/sync-branch@v1.1.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "activation"
+          TO_BRANCH: ${{ github.event.inputs.releaseBranch }}
+          REVIEWERS: "Elph "
