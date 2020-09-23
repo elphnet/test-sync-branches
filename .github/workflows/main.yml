@@ -20,6 +20,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: create branch
+        uses: peterjgrainger/action-create-branch@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: ${{ github.event.inputs.releaseBranch }}
       - name: Merge staging -> release
         uses: devmasx/merge-branch@v1.3.0
         with:
