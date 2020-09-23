@@ -23,6 +23,6 @@ jobs:
         uses: Elph/sync-branch@v1.1.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: ${{github.ref}}
+          FROM_BRANCH: ${GITHUB_REF##*/}
           TO_BRANCH: "release"
           REVIEWERS: "Elph "
