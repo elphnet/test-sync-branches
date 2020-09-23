@@ -26,17 +26,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: ${{ github.event.inputs.releaseBranch }}
-      - name: Merge staging -> release
-        uses: devmasx/merge-branch@v1.3.0
+      - name: staging > release
+        uses: everlytic/branch-merge@1.1.0
         with:
-          type: now
-          from_branch: staging
-          target_branch: ${{ github.event.inputs.releaseBranch }}
           github_token: ${{ github.token }}
-      - name: Merge activation -> release
-        uses: devmasx/merge-branch@v1.3.0
-        with:
-          type: now
-          from_branch: activation
+          source_ref: 'staging'
           target_branch: ${{ github.event.inputs.releaseBranch }}
-          github_token: ${{ github.token }}      
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+      - name: activation > release
+        uses: everlytic/branch-merge@1.1.0
+        with:
+          github_token: ${{ github.token }}
+          source_ref: 'activation'
+          target_branch: ${{ github.event.inputs.releaseBranch }}
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
