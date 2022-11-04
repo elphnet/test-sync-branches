@@ -12,7 +12,7 @@ jobs:
     name: Syncing branches
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: create branch
         uses: peterjgrainger/action-create-branch@v1.0.0
         env:
@@ -20,12 +20,12 @@ jobs:
         with:
           branch: ${{ github.event.inputs.releaseBranch }}
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Opening pull request for staging release
         id: release-staging
-        uses: Elph/sync-branch@v1.1.0
+        uses: Elph/sync-branch@v1.3.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "staging"
@@ -33,7 +33,7 @@ jobs:
           REVIEWERS: "Elph "
       - name: Opening pull request for activation release
         id: release-activation
-        uses: Elph/sync-branch@v1.1.0
+        uses: Elph/sync-branch@v1.3.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "activation"
