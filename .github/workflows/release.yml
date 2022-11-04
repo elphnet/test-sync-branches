@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
       - name: Opening pull request for staging release
         id: release-staging
         uses: Elph/sync-branch@v1.1.0
